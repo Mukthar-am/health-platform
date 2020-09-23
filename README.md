@@ -1,2 +1,2 @@
-# health-platform
-health platform code base
+# platform
+platform code base
