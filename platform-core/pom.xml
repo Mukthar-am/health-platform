@@ -1,0 +1,77 @@
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.muks.platform</groupId>
+    <artifactId>platform</artifactId>
+    <version>1.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <groupId>com.muks.platform.core</groupId>
+  <artifactId>platform-core</artifactId>
+  <packaging>jar</packaging>
+  <name>platform-core</name>
+
+  <properties>
+    <dropwizard.version>1.2.2</dropwizard.version>
+    <slf4j.version>1.7.7</slf4j.version>
+    <logback.version>1.1.11</logback.version>
+    <jcl-over-slf4j.version>1.7.22</jcl-over-slf4j.version>
+    <jackson.databind.version>2.8.7</jackson.databind.version>
+  </properties>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.3.0</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+
+
+  <build>
+    <finalName>platform-core-${version}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer
+                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>com.gca.application.GCAApplication</mainClass>
+                </transformer>
+                <transformer
+                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer">
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
