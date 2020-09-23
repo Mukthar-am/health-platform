@@ -1,2 +1,2 @@
-# health-platform
-health platform code base
+# platform
+Basic web services platform, with one working service
