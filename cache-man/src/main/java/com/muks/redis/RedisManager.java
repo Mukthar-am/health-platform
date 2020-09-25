@@ -45,6 +45,14 @@ public class RedisManager {
     }
 
 
+    public void updateNameSpace(String nameSpace, Object key) throws Exception {
+        if (isNameSpaceEmpty(nameSpace)) {
+            throw new Exception("ERROR: namespace empty");
+        }
+
+//        return RedisClient.getMap(nameSpace).put(key.g);
+    }
+
 
 
 

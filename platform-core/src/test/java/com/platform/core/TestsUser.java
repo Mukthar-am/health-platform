@@ -2,6 +2,7 @@ package com.platform.core;
 
 import com.muks.redis.RedisManager;
 
+import com.platform.core.impl.UserDaoImpl;
 import com.platform.core.metadata.User;
 import org.redisson.api.RMap;
 import org.testng.Assert;
@@ -10,7 +11,6 @@ import org.testng.annotations.Test;
 
 public class TestsUser {
     RedisManager CacheManager = null;//new RedisManager().startServer()
-
 
 
     @BeforeTest
@@ -44,6 +44,10 @@ public class TestsUser {
         try {
             User queriedUser1 = (User) CacheManager.queryNameSpace(nameSpace, user.getId());
             User queriedUser2 = (User) CacheManager.queryNameSpace(nameSpace, user2.getId());
+
+            /** user registration */
+            UserDaoImpl userDaoImpl = new UserDaoImpl();
+            userDaoImpl.registerUser(CacheManager, user);
 
             Assert.assertEquals(queriedUser1.toString(), "(id: 1, name: Mukthar, age: 38, gender: M)");
             Assert.assertEquals(queriedUser2.toString(), "(id: 2, name: Ahmed, age: 31, gender: M)");

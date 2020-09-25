@@ -1,13 +1,18 @@
 package com.platform.core.metadata;
 
 public class User {
+    private final String NameSpace = "users";
     private int Id;
     private String Name = null;
     private int Age;
     private String Gender;
 
-    public User() { }
+    public User() {
+    }
 
+    public String getNameSpace() {
+        return this.NameSpace;
+    }
 
     public int getId() {
         return Id;
