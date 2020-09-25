@@ -6,29 +6,62 @@ import org.redisson.api.RedissonClient;
 import java.io.IOException;
 
 public class RedisManager {
-    RedissonClient RedisClient = null;
+    private RedissonClient RedisClient = null;
+    private static RedisManager Instance = null;
+
+    private RedisManager() {
+    }
+
+    public static RedisManager getInstance() {
+        if (Instance == null)
+            Instance = new RedisManager();
+
+        return Instance;
+    }
 
     public RedisManager startServer() {
-        if (RedisClient == null)
-            RedisClient = RedisServer.getInstance().startServer().getRedisClient();
+        if (RedisClient == null) {
+            RedisClient = initRedisClient();
+        }
 
         return this;
     }
+
 
     public void stopServer() {
         RedisServer.getInstance().shutdown();
     }
 
+
     public RedissonClient getRedisClient() {
+        if (RedisClient == null) {
+            RedisClient = initRedisClient();
+        }
+
         return this.RedisClient;
     }
 
+
     public RMap<Object, Object> createNameSpace(String name) {
+        if (RedisClient == null) {
+            RedisClient = initRedisClient();
+        }
+
         return RedisClient.getMap(name);
     }
 
+
     public RMap<Object, Object> getNameSpace(String name) {
+        if (RedisClient == null) {
+            RedisClient = initRedisClient();
+        }
+
         return RedisClient.getMap(name);
+    }
+
+
+    private RedissonClient initRedisClient() {
+        return RedisServer.getInstance().startServer().getRedisClient();
     }
 
 
@@ -40,7 +73,11 @@ public class RedisManager {
         return RedisClient.getMap(nameSpace).get(key);
     }
 
+
     public boolean isNameSpaceEmpty(String nameSpace) {
+        if (RedisClient == null) {
+            System.out.println("RedisClient is null");
+        }
         return RedisClient.getMap(nameSpace).isEmpty();
     }
 
@@ -52,8 +89,6 @@ public class RedisManager {
 
 //        return RedisClient.getMap(nameSpace).put(key.g);
     }
-
-
 
 
     public static void main(String[] args) throws IOException {

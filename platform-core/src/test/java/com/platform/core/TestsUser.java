@@ -1,21 +1,19 @@
 package com.platform.core;
 
 import com.muks.redis.RedisManager;
-
 import com.platform.core.impl.UserDaoImpl;
 import com.platform.core.metadata.User;
-import org.redisson.api.RMap;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class TestsUser {
     RedisManager CacheManager = null;//new RedisManager().startServer()
-
+    private final String NameSpace = "muks";
 
     @BeforeTest
     public void initCache() {
-        CacheManager = new RedisManager().startServer();
+        CacheManager = RedisManager.getInstance();
     }
 
     public void killCache() {
@@ -24,33 +22,72 @@ public class TestsUser {
 
     @Test
     public void TestUserRegistration() {
-        User user = new User();
+        User user = new User(1);
         user.setName("Mukthar");
         user.setAge(38);
         user.setGender("M");
-        user.setId(1);
 
-        User user2 = new User();
+        User user2 = new User(2);
         user2.setName("Ahmed");
         user2.setAge(31);
         user2.setGender("M");
-        user2.setId(2);
 
-        String nameSpace = "muks";
-        RMap<Object, Object> userNameSpace = CacheManager.createNameSpace(nameSpace);
-        userNameSpace.put(user.getId(), user);
-        userNameSpace.put(user2.getId(), user2);
 
         try {
-            User queriedUser1 = (User) CacheManager.queryNameSpace(nameSpace, user.getId());
-            User queriedUser2 = (User) CacheManager.queryNameSpace(nameSpace, user2.getId());
-
             /** user registration */
             UserDaoImpl userDaoImpl = new UserDaoImpl();
-            userDaoImpl.registerUser(CacheManager, user);
+            userDaoImpl.registerUser(user);
+            userDaoImpl.registerUser(user2);
 
-            Assert.assertEquals(queriedUser1.toString(), "(id: 1, name: Mukthar, age: 38, gender: M)");
-            Assert.assertEquals(queriedUser2.toString(), "(id: 2, name: Ahmed, age: 31, gender: M)");
+            Assert.assertEquals(
+                    CacheManager.getNameSpace(NameSpace).get(user.getId()).toString(),
+                    "(id: 1, name: Mukthar, age: 38, gender: M)"
+            );
+
+            Assert.assertEquals(
+                    CacheManager.getNameSpace(NameSpace).get(user2.getId()).toString(),
+                    "(id: 2, name: Ahmed, age: 31, gender: M)"
+            );
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+    @Test
+    public void TestUserCacheQuery() {
+        User user = new User(1);
+        user.setName("Mukthar");
+        user.setAge(38);
+        user.setGender("M");
+
+        User user2 = new User(2);
+        user2.setName("Ahmed");
+        user2.setAge(31);
+        user2.setGender("M");
+
+        /** user registration */
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        userDaoImpl.registerUser(user);
+        userDaoImpl.registerUser(user2);
+
+
+        try {
+            User queriedUser1 = (User) CacheManager.queryNameSpace(NameSpace, user.getId());
+            User queriedUser2 = (User) CacheManager.queryNameSpace(NameSpace, user2.getId());
+
+            Assert.assertEquals(
+                    queriedUser1.toString(),
+                    "(id: 1, name: Mukthar, age: 38, gender: M)"
+            );
+
+            Assert.assertEquals(
+                    queriedUser2.toString(),
+                    "(id: 2, name: Ahmed, age: 31, gender: M)"
+            );
 
         } catch (Exception e) {
             e.printStackTrace();

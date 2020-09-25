@@ -11,9 +11,11 @@ public class RedisServer {
     private boolean UseSingleServer = true;
 
     private static RedisServer Instance = null;
-    private RedissonClient RedissonClient;
+    private RedissonClient RedissonClient = null;
+
 
     private void RedisServer() {}
+
 
     public static RedisServer getInstance() {
         if (Instance == null)
@@ -24,14 +26,16 @@ public class RedisServer {
 
 
     public RedisServer startServer() {
-        if (Instance.UseSingleServer)
-            Instance.Config.useSingleServer();
+        if (RedissonClient == null) {
+            if (Instance.UseSingleServer)
+                Instance.Config.useSingleServer();
 
-        String instanceAddress = "redis://" + Instance.RedisHost + ":" + Instance.RedisPort;
-        Instance.Config.useSingleServer().setAddress(instanceAddress);
-        /** INSTANCE.CONFIG.useClusterServers().addNodeAddress(); // for redis cluster */
+            String instanceAddress = "redis://" + Instance.RedisHost + ":" + Instance.RedisPort;
+            Instance.Config.useSingleServer().setAddress(instanceAddress);
+            /** INSTANCE.CONFIG.useClusterServers().addNodeAddress(); // for redis cluster */
 
-        Instance.RedissonClient = Redisson.create(Instance.Config);
+            Instance.RedissonClient = Redisson.create(Instance.Config);
+        }
 
         return Instance;
     }

@@ -9,7 +9,7 @@ public class TestRedis {
 
     @Test
     public void testSanity() {
-        RedisManager redisManager = new RedisManager().startServer();
+        RedisManager redisManager = RedisManager.getInstance().startServer();
 
         RMap user = redisManager.createNameSpace("user");
         user.put("muks", "78");

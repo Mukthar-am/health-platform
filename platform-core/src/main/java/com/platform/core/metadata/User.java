@@ -10,6 +10,10 @@ public class User {
     public User() {
     }
 
+    public User(int id) {
+        this.Id = id;
+    }
+
     public String getNameSpace() {
         return this.NameSpace;
     }
