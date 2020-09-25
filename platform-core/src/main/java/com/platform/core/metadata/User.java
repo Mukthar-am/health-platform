@@ -1,50 +1,53 @@
 package com.platform.core.metadata;
 
 public class User {
-    private int ID;
-    private String NAME = null;
-    private int AGE;
-    private String GENDER;
+    private int Id;
+    private String Name = null;
+    private int Age;
+    private String Gender;
 
     public User() { }
 
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return Id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.Id = id;
     }
 
-    public String getNAME() {
-        return NAME;
+    public String getName() {
+        return Name;
     }
 
-    public void setNAME(String NAME) {
-        this.NAME = NAME;
+    public void setName(String name) {
+        this.Name = name;
     }
 
-    public int getAGE() {
-        return AGE;
+    public int getAge() {
+        return Age;
     }
 
-    public void setAGE(int AGE) {
-        this.AGE = AGE;
+    public void setAge(int age) {
+        this.Age = age;
     }
 
-    public String getGENDER() {
-        return GENDER;
+    public String getGender() {
+        return Gender;
     }
 
-    public void setGENDER(String GENDER) {
-        this.GENDER = GENDER;
+    public void setGender(String gender) {
+        this.Gender = gender;
     }
 
     @Override
     public String toString() {
         StringBuilder userInfo = new StringBuilder();
-
+        userInfo.append("(id: " + Id + ", ");
+        userInfo.append("name: " + Name + ", ");
+        userInfo.append("age: " + Age + ", ");
+        userInfo.append("gender: " + Gender + ")");
         return userInfo.toString();
     }
 }

@@ -23,16 +23,36 @@ public class RedisManager {
         return this.RedisClient;
     }
 
-    public RMap<Object, Object> addMap(String name) {
+    public RMap<Object, Object> createNameSpace(String name) {
         return RedisClient.getMap(name);
     }
+
+    public RMap<Object, Object> getNameSpace(String name) {
+        return RedisClient.getMap(name);
+    }
+
+
+    public Object queryNameSpace(String nameSpace, Object key) throws Exception {
+        if (isNameSpaceEmpty(nameSpace)) {
+            throw new Exception("ERROR: namespace empty");
+        }
+
+        return RedisClient.getMap(nameSpace).get(key);
+    }
+
+    public boolean isNameSpaceEmpty(String nameSpace) {
+        return RedisClient.getMap(nameSpace).isEmpty();
+    }
+
+
+
 
 
     public static void main(String[] args) throws IOException {
 
         RedisManager redisManager = new RedisManager().startServer();
 
-        RMap user = redisManager.addMap("user");
+        RMap user = redisManager.createNameSpace("user");
         user.put("muks", "78");
 
         System.out.println("user: " + user.get("muks"));

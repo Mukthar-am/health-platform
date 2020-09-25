@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.platform.core.AppTest
+Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.318 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.824 s - in TestSuite

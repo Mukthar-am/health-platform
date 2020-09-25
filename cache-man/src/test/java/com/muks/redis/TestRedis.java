@@ -11,9 +11,10 @@ public class TestRedis {
     public void testSanity() {
         RedisManager redisManager = new RedisManager().startServer();
 
-        RMap user = redisManager.addMap("user");
+        RMap user = redisManager.createNameSpace("user");
         user.put("muks", "78");
         Assert.assertEquals("78", user.get("muks"));
+        System.out.println("user:- " + user);
 
         redisManager.stopServer();
     }

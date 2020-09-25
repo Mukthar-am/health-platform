@@ -1,3 +1,4 @@
-com/platform/core/impl/UserImpl.class
-com/platform/core/dao/UserDao.class
 com/platform/core/metadata/User.class
+com/platform/core/impl/UserDaoImpl.class
+com/platform/core/caching/CacheManager.class
+com/platform/core/dao/UserDao.class
