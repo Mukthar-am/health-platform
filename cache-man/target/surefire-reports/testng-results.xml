@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Surefire suite" duration-ms="1308" started-at="2020-09-28T17:18:10 IST" finished-at="2020-09-28T17:18:11 IST">
+  <suite name="Surefire suite" duration-ms="819" started-at="2020-09-28T19:23:44 IST" finished-at="2020-09-28T19:23:45 IST">
     <groups>
     </groups>
-    <test name="Surefire test" duration-ms="1308" started-at="2020-09-28T17:18:10 IST" finished-at="2020-09-28T17:18:11 IST">
+    <test name="Surefire test" duration-ms="819" started-at="2020-09-28T19:23:44 IST" finished-at="2020-09-28T19:23:45 IST">
       <class name="com.muks.redis.TestRedis">
-        <test-method status="PASS" signature="testSanity()[pri:0, instance:com.muks.redis.TestRedis@6d00a15d]" name="testSanity" duration-ms="1281" started-at="2020-09-28T17:18:10 IST" finished-at="2020-09-28T17:18:11 IST">
+        <test-method status="PASS" signature="testSanity()[pri:0, instance:com.muks.redis.TestRedis@6d00a15d]" name="testSanity" duration-ms="795" started-at="2020-09-28T19:23:44 IST" finished-at="2020-09-28T19:23:45 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSanity -->

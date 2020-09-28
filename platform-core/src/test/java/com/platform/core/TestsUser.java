@@ -3,24 +3,21 @@ package com.platform.core;
 import com.muks.redis.RedisManager;
 import com.platform.core.impl.UserDaoImpl;
 import com.platform.core.metadata.User;
-import org.redisson.api.RMap;
 import org.redisson.api.RedissonClient;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.Collection;
-
 public class TestsUser {
     private RedisManager CacheManager = null;//new RedisManager().startServer()
-    private RedissonClient CacheClient = null;
+//    private RedissonClient CacheClient = null;
 
 
     @BeforeTest
     public void initCache() {
         CacheManager = RedisManager.getInstance().startServer();
-        CacheClient = CacheManager.getRedisClient();
+//        CacheClient = CacheManager.getRedisClient();
     }
 
     @AfterTest

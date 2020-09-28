@@ -6,7 +6,7 @@ import com.platform.services.auth.AppBasicAuthenticator;
 import com.platform.services.auth.User;
 import com.platform.services.configurations.Configuration;
 import com.platform.services.health.ApplicationHealthCheck;
-import com.platform.services.services.WelcomeService;
+import com.platform.services.services.UserService;
 import io.dropwizard.Application;
 
 
@@ -70,9 +70,9 @@ public class ApplicationMain extends Application<Configuration> {
         final ApplicationHealthCheck healthCheck = new ApplicationHealthCheck(configuration.getTemplate());
         environment.healthChecks().register("template", healthCheck);
 
-        final WelcomeService
-                welcomeService = new WelcomeService(environment.getValidator(), configuration, environment.healthChecks());
-        environment.jersey().register(welcomeService);
+        final UserService
+                userService = new UserService(environment.getValidator(), configuration, environment.healthChecks());
+        environment.jersey().register(userService);
 
 
         /****** Dropwizard security - custom classes ***********/

@@ -3,7 +3,7 @@
 /Users/mukthara/Data/git/personal/interviews/platform/platform-services/src/main/java/com/platform/services/configurations/Schemas.java
 /Users/mukthara/Data/git/personal/interviews/platform/platform-services/src/main/java/com/platform/services/auth/User.java
 /Users/mukthara/Data/git/personal/interviews/platform/platform-services/src/main/java/com/platform/services/auth/AppAuthorizer.java
-/Users/mukthara/Data/git/personal/interviews/platform/platform-services/src/main/java/com/platform/services/services/WelcomeService.java
+/Users/mukthara/Data/git/personal/interviews/platform/platform-services/src/main/java/com/platform/services/metadata/PlatformUser.java
 /Users/mukthara/Data/git/personal/interviews/platform/platform-services/src/main/java/com/platform/services/configurations/MyCommand.java
 /Users/mukthara/Data/git/personal/interviews/platform/platform-services/src/main/java/com/platform/services/configurations/PathConfiguration.java
 /Users/mukthara/Data/git/personal/interviews/platform/platform-services/src/main/java/com/platform/services/configurations/ConfigPaths.java
@@ -12,3 +12,4 @@
 /Users/mukthara/Data/git/personal/interviews/platform/platform-services/src/main/java/com/platform/services/health/ApplicationHealthCheck.java
 /Users/mukthara/Data/git/personal/interviews/platform/platform-services/src/main/java/com/platform/services/configurations/DBConfigurations.java
 /Users/mukthara/Data/git/personal/interviews/platform/platform-services/src/main/java/com/platform/services/application/ApplicationMain.java
+/Users/mukthara/Data/git/personal/interviews/platform/platform-services/src/main/java/com/platform/services/services/UserService.java
