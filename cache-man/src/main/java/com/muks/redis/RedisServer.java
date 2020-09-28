@@ -10,43 +10,49 @@ public class RedisServer {
     private int RedisPort = 6379;
     private boolean UseSingleServer = true;
 
-    private static RedisServer Instance = null;
-    private RedissonClient RedissonClient = null;
+    private static RedisServer ServerInstance = null;
+    private RedissonClient RedissonClientInstance = null;
 
 
     private void RedisServer() {}
 
 
-    public static RedisServer getInstance() {
-        if (Instance == null)
-            Instance = new RedisServer();
+    public static RedisServer getServerInstance() {
+        if (ServerInstance == null)
+            ServerInstance = new RedisServer();
 
-        return Instance;
+        return ServerInstance;
     }
 
 
-    public RedisServer startServer() {
-        if (RedissonClient == null) {
-            if (Instance.UseSingleServer)
-                Instance.Config.useSingleServer();
+    public RedisServer start() {
+        if (RedissonClientInstance == null) {
+            if (ServerInstance.UseSingleServer)
+                ServerInstance.Config.useSingleServer();
 
-            String instanceAddress = "redis://" + Instance.RedisHost + ":" + Instance.RedisPort;
-            Instance.Config.useSingleServer().setAddress(instanceAddress);
+            String instanceAddress = "redis://" + ServerInstance.RedisHost + ":" + ServerInstance.RedisPort;
+            ServerInstance.Config.useSingleServer().setAddress(instanceAddress);
             /** INSTANCE.CONFIG.useClusterServers().addNodeAddress(); // for redis cluster */
 
-            Instance.RedissonClient = Redisson.create(Instance.Config);
+            ServerInstance.RedissonClientInstance = Redisson.create(ServerInstance.Config);
+        } else {
+            System.out.println("Server is already running....");
         }
 
-        return Instance;
+        return ServerInstance;
     }
 
 
     public void shutdown() {
-        Instance.RedissonClient.shutdown();
+        if (ServerInstance.RedissonClientInstance == null) {
+            System.out.println("there's no running instance of server");
+        } else {
+            ServerInstance.RedissonClientInstance.shutdown();
+        }
     }
 
 
     public RedissonClient getRedisClient() {
-        return this.RedissonClient;
+        return this.RedissonClientInstance;
     }
 }

@@ -21,47 +21,40 @@ public class RedisManager {
 
     public RedisManager startServer() {
         if (RedisClient == null) {
-            RedisClient = initRedisClient();
+            RedisClient = init();
         }
 
-        return this;
+        return Instance;
     }
 
 
     public void stopServer() {
-        RedisServer.getInstance().shutdown();
+        if (RedisServer.getServerInstance() != null)
+            RedisServer.getServerInstance().shutdown();
     }
 
 
     public RedissonClient getRedisClient() {
-        if (RedisClient == null) {
-            RedisClient = initRedisClient();
+        if (this.RedisClient == null) {
+            this.RedisClient = init();
         }
 
-        return this.RedisClient;
+        return RedisClient;
     }
 
 
     public RMap<Object, Object> createNameSpace(String name) {
-        if (RedisClient == null) {
-            RedisClient = initRedisClient();
-        }
-
-        return RedisClient.getMap(name);
+        return this.RedisClient.getMap(name);
     }
 
 
     public RMap<Object, Object> getNameSpace(String name) {
-        if (RedisClient == null) {
-            RedisClient = initRedisClient();
-        }
-
-        return RedisClient.getMap(name);
+        return this.RedisClient.getMap(name);
     }
 
 
-    private RedissonClient initRedisClient() {
-        return RedisServer.getInstance().startServer().getRedisClient();
+    private RedissonClient init() {
+        return RedisServer.getServerInstance().start().getRedisClient();
     }
 
 

@@ -1,7 +1,10 @@
 package com.platform.core.metadata;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class User {
-    private final String NameSpace = "users";
+    public static final String NameSpace = "users";
     private int Id = -1;
     private String Name = new String("");
     private int Age = -1;
@@ -9,8 +12,7 @@ public class User {
 
     private String PhoneNumber = new String("");
 
-    public User() {
-    }
+    public User() {}
 
     public User(int id) {
         this.Id = id;
@@ -60,6 +62,14 @@ public class User {
         PhoneNumber = phoneNumber;
     }
 
+    public String toJson() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        //Converting the Object to JSONString
+        String jsonString = mapper.writeValueAsString(this);
+        System.out.println(jsonString);
+
+        return jsonString;
+    }
     @Override
     public String toString() {
         StringBuilder userInfo = new StringBuilder();

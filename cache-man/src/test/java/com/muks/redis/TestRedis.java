@@ -14,9 +14,22 @@ public class TestRedis {
         RMap user = redisManager.createNameSpace("user");
         user.put("muks", "78");
         Assert.assertEquals("78", user.get("muks"));
-        System.out.println("user:- " + user);
+        System.out.println("user:- " + user.toString());
 
         redisManager.stopServer();
     }
+
+
+//    @Test
+//    public void testByServer() {
+//        RedisServer server = RedisServer.getServerInstance().start();
+//        server.start();
+//
+//        RMap user = redisManager.createNameSpace("user");
+//        user.put("muks", "78");
+//        Assert.assertEquals("78", user.get("muks"));
+//        System.out.println("user:- " + user);
+//
+//    }
 
 }
