@@ -2,10 +2,12 @@ package com.platform.core.metadata;
 
 public class User {
     private final String NameSpace = "users";
-    private int Id;
-    private String Name = null;
-    private int Age;
-    private String Gender;
+    private int Id = -1;
+    private String Name = new String("");
+    private int Age = -1;
+    private String Gender = new String("");
+
+    private String PhoneNumber = new String("");
 
     public User() {
     }
@@ -50,13 +52,22 @@ public class User {
         this.Gender = gender;
     }
 
+    public String getPhoneNumber() {
+        return PhoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        PhoneNumber = phoneNumber;
+    }
+
     @Override
     public String toString() {
         StringBuilder userInfo = new StringBuilder();
-        userInfo.append("(id: " + Id + ", ");
-        userInfo.append("name: " + Name + ", ");
-        userInfo.append("age: " + Age + ", ");
-        userInfo.append("gender: " + Gender + ")");
+        userInfo.append("id=" + Id + ",");
+        userInfo.append("name=" + Name + ",");
+        userInfo.append("age=" + Age + ",");
+        userInfo.append("gender=" + Gender + ",");
+        userInfo.append("ph=" + PhoneNumber);
         return userInfo.toString();
     }
 }
