@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Surefire suite" duration-ms="749" started-at="2020-09-28T19:23:46 IST" finished-at="2020-09-28T19:23:47 IST">
+  <suite started-at="2020-10-01T13:51:23 IST" name="Surefire suite" finished-at="2020-10-01T13:51:24 IST" duration-ms="948">
     <groups>
     </groups>
-    <test name="Surefire test" duration-ms="749" started-at="2020-09-28T19:23:46 IST" finished-at="2020-09-28T19:23:47 IST">
+    <test started-at="2020-10-01T13:51:23 IST" name="Surefire test" finished-at="2020-10-01T13:51:24 IST" duration-ms="948">
       <class name="com.platform.core.TestsUser">
-        <test-method status="PASS" signature="initCache()[pri:0, instance:com.platform.core.TestsUser@d2cc05a]" name="initCache" is-config="true" duration-ms="601" started-at="2020-09-28T19:23:46 IST" finished-at="2020-09-28T19:23:46 IST">
+        <test-method is-config="true" signature="initCache()[pri:0, instance:com.platform.core.TestsUser@3d74bf60]" started-at="2020-10-01T13:51:23 IST" name="initCache" finished-at="2020-10-01T13:51:24 IST" duration-ms="577" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initCache -->
-        <test-method status="PASS" signature="TestUserById()[pri:0, instance:com.platform.core.TestsUser@d2cc05a]" name="TestUserById" duration-ms="76" started-at="2020-09-28T19:23:46 IST" finished-at="2020-09-28T19:23:47 IST">
+        <test-method signature="TestUserById()[pri:0, instance:com.platform.core.TestsUser@3d74bf60]" started-at="2020-10-01T13:51:24 IST" name="TestUserById" finished-at="2020-10-01T13:51:24 IST" duration-ms="118" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestUserById -->
-        <test-method status="PASS" signature="TestUserCacheQuery()[pri:0, instance:com.platform.core.TestsUser@d2cc05a]" name="TestUserCacheQuery" duration-ms="5" started-at="2020-09-28T19:23:47 IST" finished-at="2020-09-28T19:23:47 IST">
+        <test-method signature="TestUserCacheQuery()[pri:0, instance:com.platform.core.TestsUser@3d74bf60]" started-at="2020-10-01T13:51:24 IST" name="TestUserCacheQuery" finished-at="2020-10-01T13:51:24 IST" duration-ms="37" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestUserCacheQuery -->
-        <test-method status="PASS" signature="TestUserChangingSchema()[pri:0, instance:com.platform.core.TestsUser@d2cc05a]" name="TestUserChangingSchema" duration-ms="16" started-at="2020-09-28T19:23:47 IST" finished-at="2020-09-28T19:23:47 IST">
+        <test-method signature="TestUserChangingSchema()[pri:0, instance:com.platform.core.TestsUser@3d74bf60]" started-at="2020-10-01T13:51:24 IST" name="TestUserChangingSchema" finished-at="2020-10-01T13:51:24 IST" duration-ms="139" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestUserChangingSchema -->
-        <test-method status="PASS" signature="TestUserRegistration()[pri:0, instance:com.platform.core.TestsUser@d2cc05a]" name="TestUserRegistration" duration-ms="4" started-at="2020-09-28T19:23:47 IST" finished-at="2020-09-28T19:23:47 IST">
+        <test-method signature="TestUserRegistration()[pri:0, instance:com.platform.core.TestsUser@3d74bf60]" started-at="2020-10-01T13:51:24 IST" name="TestUserRegistration" finished-at="2020-10-01T13:51:24 IST" duration-ms="20" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestUserRegistration -->
-        <test-method status="PASS" signature="killCache()[pri:0, instance:com.platform.core.TestsUser@d2cc05a]" name="killCache" is-config="true" duration-ms="26" started-at="2020-09-28T19:23:47 IST" finished-at="2020-09-28T19:23:47 IST">
+        <test-method is-config="true" signature="killCache()[pri:0, instance:com.platform.core.TestsUser@3d74bf60]" started-at="2020-10-01T13:51:24 IST" name="killCache" finished-at="2020-10-01T13:51:24 IST" duration-ms="37" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- killCache -->

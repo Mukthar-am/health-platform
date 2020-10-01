@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.platform.core.metadata.User;
 import com.platform.services.configurations.Configuration;
 import com.platform.services.metadata.PlatformUser;
+import com.platform.services.platform.PlatformUserFunctions;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,12 +85,23 @@ public class UserService {
             logger.error(
                     "Validation failures have occurred. Validation msgs: {}, incoming request: {}",
                     validationMessages, user.toString());
+
             return Response.status(Response.Status.BAD_REQUEST).entity(validationMessages).build();
         } else {
             logger.info("all good...");
 
+            /** register the user */
+            user.registerUser();
+
+            /** check for successful registration */
+            if (PlatformUserFunctions.isKnownUser(user) != null) {
+                logger.info("user found" );
+            } else {
+                logger.info("user NOT found...");
+            }
+
             Response response = Response
-                    .accepted(Response.Status.ACCEPTED)
+                    .accepted("User registered successfully.")
                     .build();
 
             return response;
